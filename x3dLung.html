@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv='Content-Type' content='text/html;charset=utf-8'></meta>
+    <script type='text/javascript' src='http://www.x3dom.org/x3dom/release/x3dom.js'></script>
+    <link rel="stylesheet" href="style/x3dStyle.css">
+  </head>
+  <body onLoad="changeBtn(defaultViewBtn);">
+        <h1>Lung Tour</h1>
+
+<!--X3D_______________________________________________________________________________________ -->    
+    <x3d id='x3dLung' showStat='false' showLog='false' x='0px' y='0px' width='900px' height='700px'>
+      <scene>
+        <transform scale='0.1 0.1 0.1' translation='-0.3 -0.35 0'></transform>
+        <transform scale='0.1 0.1 0.1' translation='0.37 -0.2 0'></transform>
+        <transform scale='0.1 0.1 0.1' translation='0.3 -0.2 0'></transform>
+        <transform DEF='Camera' rotation='0 1 0 3.9' translation='-1000 100 -900'>
+          <viewpoint DEF='TourGuide' description='Tour Guide'></viewpoint>
+          <navigationInfo type='"EXAMINE" "FLY" "ANY"'></navigationInfo>
+        </transform>
+        <transform rotation='0 1 0 2.5' scale='10 10 10' translation='30 100 -300'></transform>
+
+        <!--lights-->
+        <spotLight DEF='Spot1' color='1 1 0' intensity='0.5' beamWidth='0.4' cutOffAngle='1' direction='0 -1 0' location='-5 5 -5' radius='15' global='false'></spotLight>
+        <spotLight DEF='Spot2' color='0 0 1' intensity='0.5' beamWidth='0.4' cutOffAngle='1' direction='0 -1 0' location='5 5 -5' radius='15' global='false'></spotLight>
+        <spotLight DEF='Spot3' color='0 1 0' intensity='0.5' beamWidth='0.4' cutOffAngle='1' direction='0 -1 0' location='5 5 5' radius='15' global='false'></spotLight>
+        <spotLight DEF='Spot4' color='1 0 0' intensity='0.5' beamWidth='0.4' cutOffAngle='1' direction='0 -1 0' location='-5 5 5' radius='15' global='false'></spotLight>
+
+        <!--objects -->
+        <group DEF='Objects'>
+          <transform DEF='lung' id='lung' rotation='0 1 0 1' scale='0.5 0.5 0.5' translation='0 0 0'>
+            <inline url='"media/lung2.x3d"'></inline>
+          </transform>
+
+          <transform DEF='bronch' rotation='0 1 0 1' scale='0.5 0.5 0.5' translation='0 0 0'>
+            <inline url='"media/bronch.x3d"'></inline>
+          </transform>
+        </group>
+        <group>
+
+
+        <!--timer -->
+          <timeSensor DEF='AnimationTimer' loop='true' startTime='1e+50'></timeSensor>
+          <timeSensor DEF='AvatarAnimationTimer' cycleInterval='16' loop='true' startTime='1e+50'></timeSensor>
+          <timeSensor DEF='TourTimer' cycleInterval='100' loop='true' startTime='1e+50'></timeSensor>
+
+
+        <!--Position Interpolator -->
+          <positionInterpolator DEF='Spot1PosList' key='0 0.25 0.5 0.75 1' keyValue='-0.5 -1 0 0 -1 -0.5 0.5 -1 0 0 -1 0.5 -0.5 -1 0'></positionInterpolator>
+          <positionInterpolator DEF='Spot2PosList' key='0 0.25 0.5 0.75 1' keyValue='0 -1 -0.5 -0.5 -1 0 0 -1 0.5 0.5 -1 0 0 -1 -0.5'></positionInterpolator>
+          <positionInterpolator DEF='Spot3PosList' key='0 0.25 0.5 0.75 1' keyValue='0.5 -1 0 0 -1 0.5 -0.5 -1 0 0 -1 -0.5 0.5 -1 0'></positionInterpolator>
+          <positionInterpolator DEF='Spot4PosList' key='0 0.25 0.5 0.75 1' keyValue='0 -1 0.5 0.5 -1 0 0 -1 -0.5 -0.5 -1 0 0 -1 0.5'></positionInterpolator>
+          <colorInterpolator DEF='Spot1ColorList' key='0 0.25 0.5 0.75 1' keyValue='1 1 0 1 0 0 0 1 0 0 0 1 1 1 0'></colorInterpolator>
+          <colorInterpolator DEF='Spot2ColorList' key='0 0.25 0.5 0.75 1' keyValue='0 0 1 1 1 0 1 0 0 0 1 0 0 0 1'></colorInterpolator>
+          <colorInterpolator DEF='Spot3ColorList' key='0 0.25 0.5 0.75 1' keyValue='0 1 0 0 0 1 1 1 0 1 0 0 0 1 0'></colorInterpolator>
+          <colorInterpolator DEF='Spot4ColorList' key='0 0.25 0.5 0.75 1' keyValue='1 0 0 0 1 0 0 0 1 1 1 0 1 0 0'></colorInterpolator>
+        </group>
+
+
+        <!--Cameras -->
+        <viewpoint id='front_cam' DEF='camera1' description='lung' orientation='0 1 0 3.9' position= '-1000 100 -900'></viewpoint>
+        <viewpoint id='back_cam' DEF='camera2' description='bronch' orientation='0 1 0 2.2' position='250 100 -130'></viewpoint>
+        <viewpoint id='default_cam' DEF='camera4' description='Birds Eye' position='0 250 800'></viewpoint>
+
+
+        <!--Route Nodes -->
+        <ROUTE fromNode='Script' fromField='audioIntensity' toNode='Audio' toField='set_intensity'></ROUTE>
+
+        <ROUTE fromNode='TourTimer' fromField='fraction_changed' toNode='GuidePosList' toField='set_fraction'></ROUTE>
+        <ROUTE fromNode='TourTimer' fromField='fraction_changed' toNode='GuideRotList' toField='set_fraction'></ROUTE>
+        <ROUTE fromNode='GuidePosList' fromField='value_changed' toNode='Camera' toField='set_translation'></ROUTE>
+        <ROUTE fromNode='GuideRotList' fromField='value_changed' toNode='Camera' toField='set_rotation'></ROUTE>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='Spot1PosList' toField='set_fraction'></ROUTE>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='Spot2PosList' toField='set_fraction'></ROUTE>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='Spot3PosList' toField='set_fraction'></ROUTE>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='Spot4PosList' toField='set_fraction'></ROUTE>
+        <ROUTE fromNode='Spot1PosList' fromField='value_changed' toNode='Spot1' toField='set_direction'></ROUTE>
+        <ROUTE fromNode='Spot2PosList' fromField='value_changed' toNode='Spot2' toField='set_direction'></ROUTE>
+        <ROUTE fromNode='Spot3PosList' fromField='value_changed' toNode='Spot3' toField='set_direction'></ROUTE>
+        <ROUTE fromNode='Spot4PosList' fromField='value_changed' toNode='Spot4' toField='set_direction'></ROUTE>
+        <ROUTE fromNode='Spot1ColorList' fromField='value_changed' toNode='Spot1' toField='set_color'></ROUTE>
+        <ROUTE fromNode='Spot2ColorList' fromField='value_changed' toNode='Spot2' toField='set_color'></ROUTE>
+        <ROUTE fromNode='Spot3ColorList' fromField='value_changed' toNode='Spot3' toField='set_color'></ROUTE>
+        <ROUTE fromNode='Spot4ColorList' fromField='value_changed' toNode='Spot4' toField='set_color'></ROUTE>
+      </scene>
+    </x3d>
+<!--_______________________________________________________________________________________ -->    
+<!-- buttons -->
+    <BR/>
+    <div class="buttons group">
+
+      <button onclick="document.getElementById('default_cam').setAttribute('set_bind','true'); changeBtn(backBtn);" id="backBtn">Back</button>
+
+      <button onclick="document.getElementById('back_cam').setAttribute('set_bind','true'); changeBtn(alveoliBtn);" id="Alveoli" value="alveoliBtn">Alveoli</button>
+
+      <button onclick="document.getElementById('front_cam').setAttribute('set_bind','true'); changeBtn(defaultViewBtn);" id="defaultViewBtn">Default View</button>
+
+      <button onclick="changeTrans(); changeBtn(hideBtn);" id="hideBtn">Hide Lungs</button>
+
+      <button id="breathBtn" onclick="breath(); changeBtn(breathBtn);">Breath</button>
+
+      <button id="homeBtn" onclick="location.href='index.html'">Home</button>
+
+    </div>
+
+
+<script type="text/javascript">
+
+// function to change the scale and make the lungs breath! ==============
+    var lung = document.getElementById('lung'),
+        breathIn = true,
+        scaleL = 0.5,
+        maxScale = 0.56,
+        transL = 0,
+        maxTransL = 15,
+        breathing = false,
+        rendering = true,
+        startBreath;
+
+    function inOrOut() {
+      if(breathIn==true && scaleL<maxScale) {
+        scaleL = scaleL + 0.002;
+        transL = transL + 0.42;
+        lung.setAttribute('scale', '' + scaleL + ' ' + scaleL + ' ' + scaleL);
+        lung.setAttribute('translation', '' + transL + ' 0 0');
+
+        if(scaleL >= maxScale) {
+          breathIn = false;
+        }
+      }
+      else if(breathIn==false) {
+        scaleL = scaleL - 0.002;
+        transL = transL - 0.42;
+        lung.setAttribute('scale', '' + scaleL + ' ' + scaleL + ' ' + scaleL);
+        lung.setAttribute('translation', '' + transL + ' 0 0');
+
+        if(scaleL == 0.5) {
+          breathIn = true;
+        }
+      }
+    }
+
+    function breath() {
+      if(breathing == false) {
+        breathing = true;
+        document.getElementById("breathBtn").innerHTML = "Pause";
+        startBreath = window.setInterval(inOrOut, 32);
+      }
+      else if(breathing == true) {
+        breathing = false;
+        document.getElementById("breathBtn").innerHTML = "Breath";
+        clearInterval(startBreath);
+      }
+    }
+//=========================================================
+//=========change Trans function==================================
+
+    function changeTrans() {
+      if (rendering == true){
+        lung.setAttribute('render', false);
+        rendering = false;
+        document.getElementById("hideBtn").innerHTML = "Show Lungs";
+      }
+      else if(rendering == false){
+        lung.setAttribute('render', true);
+        rendering = true;
+        document.getElementById("hideBtn").innerHTML = "Hide Lungs";
+      }
+    }
+
+//=========================================================
+    //button selected function
+function changeBtn(selectBtn){
+  backBtn.style.backgroundColor = '#33B3B3';
+  alveoliBtn.style.backgroundColor = '#33B3B3';
+  defaultViewBtn.style.backgroundColor = '#33B3B3';
+  hideBtn.style.backgroundColor = '#33B3B3';
+  breathBtn.style.backgroundColor = '#33B3B3';
+  homeBtn.style.backgroundColor = '#33B3B3';
+  selectBtn.style.backgroundColor = '#55D5D5';
+
+}
+
+    
+</script>
+  </body>
+</html>

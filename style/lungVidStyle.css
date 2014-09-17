@@ -1,0 +1,84 @@
+body { 
+  font: normal 16px/20px "Helvetica Neue", Helvetica, sans-serif;
+  background-color: #27a7b5;
+  margin: 0;
+  margin-top: 40px;
+  padding: 0;
+}
+
+header {
+  border-bottom: 3px solid white;
+  text-align: center
+}
+
+h1 {
+  padding: 10px;
+  color: white;
+  font-size: 60px;
+}
+
+.lungVideos {
+  float: right;
+  width: 1190px;
+  height: 800px;
+  z-index: -1;
+}
+
+.pipeVideos {
+  float: left;
+  height: 250px;
+  border: 5px solid white;
+  margin-top: 50px;
+}
+
+
+#btnDiv{
+  text-align: center;
+  padding-top: 30px;
+}
+
+#btnDiv table td{
+  padding-top: 32px;
+  padding-left: 300px;
+}
+
+#two {
+  opacity:0; 
+  z-index:-1; 
+  margin-right:-1190px;
+}
+
+#three {
+  opacity:0; 
+  z-index:-1; 
+  margin-right:-1190px;
+}
+
+#pipeone {
+  opacity: 1;
+  z-index: 0;
+  margin-left: 240px;
+}
+
+#pipetwo {
+  opacity:0; 
+  z-index:1; 
+  margin-left: -454px;
+}
+
+#pipethree {
+  opacity:0; 
+  z-index:1; 
+  margin-left: -454px;
+}
+
+button {
+  font-size: 40px;
+  padding: 3px;
+  margin-left: 5px; 
+  color: white;
+  background-color: #33B3B3; 
+  moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border: 5px solid white;
+}
