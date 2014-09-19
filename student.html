@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+  <link rel="stylesheet" href="scripts/jquery-ui.css">
+  <script src="scripts/jquery1.js"></script>
+  <script src="scripts/jquery-ui.js"></script>
+
+  <script>
+  $(function() {
+    $( "#accordion" ).accordion();
+  });
+  </script>
+</head>
+
+<body style=
+"font: normal 16px/20px 'Helvetica Neue', Helvetica, sans-serif;
+  min-width: 1500px;
+  background-color: #27a7b5;">
+
+	<form action= "appQuestionnaire.php" name="studentform" onsubmit= method="POST">
+
+	<div id="accordion">
+		<h3>Welcome</h3>
+		<div><p>Welcome! Please fill out every section in this questionnaire. It shouldn't take longer than a minute or two.</p><p>Please select the value that best describes your experience of the Application. <br><br> 1 being the least satisfied and 5 being the most satisfied</p></div>
+
+	 	<h3>Are you:</h3>
+	 	<div>
+			<input type="radio" name="sex" value="male">Male<br>
+			<input type="radio" name="sex" value="female">Female<br>
+		</div>
+
+
+		<h3>Overall, I am satisfied with the visualisations:</h3>
+		<div>
+			<input type="radio" name="v" value="1">1
+			<input type="radio" name="v" value="2">2
+			<input type="radio" name="v" value="3">3
+			<input type="radio" name="v" value="4">4
+			<input type="radio" name="v" value="5">5
+		</div>
+
+		<h3>I am satisfied with the 3D models:</h3>
+		<div>
+			<input type="radio" name="m" value="1">1
+			<input type="radio" name="m" value="2">2
+			<input type="radio" name="m" value="3">3
+			<input type="radio" name="m" value="4">4
+			<input type="radio" name="m" value="5">5
+		</div>
+
+		<h3>I am satisfied with the user interface(buttons etc):</h3>
+		<div>
+			<input type="radio" name="ui" value="1">1
+			<input type="radio" name="ui" value="2">2
+			<input type="radio" name="ui" value="3">3
+			<input type="radio" name="ui" value="4">4
+			<input type="radio" name="ui" value="5">5
+		</div>
+		<h3>I am satisfied with the level of control provided:</h3>
+		<div>
+			<input type="radio" name="c" value="1">1
+			<input type="radio" name="c" value="2">2
+			<input type="radio" name="c" value="3">3
+			<input type="radio" name="c" value="4">4
+			<input type="radio" name="c" value="5">5
+		</div>
+		<h3>Overall, I am satisfied with the interactivity:</h3>
+		<div>
+			<input type="radio" name="i" value="1">1
+			<input type="radio" name="i" value="2">2
+			<input type="radio" name="i" value="3">3
+			<input type="radio" name="i" value="4">4
+			<input type="radio" name="i" value="5">5
+		</div>
+
+		
+
+	</div>
+	<input type="submit" value="submit the questionnaire"></input>
+	</form>
+</body>
+
+<footer></footer>
+</html>
