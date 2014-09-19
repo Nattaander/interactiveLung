@@ -96,7 +96,7 @@
 
 
 
-	$link = mysqli_connect('192.168.1.4','',''); 
+	$link = mysqli_connect('//192.168.1.4','',''); 
 	if (mysqli_connect_errno()) { 
 		die(' <br> Could not connect to MySQL: ' . mysqli_connect_error()); 
 	} 
