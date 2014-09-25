@@ -17,7 +17,7 @@
 <!-- ............................................................................-->
 		<?php 
 
-					$link = mysqli_connect('localhost','',''); 
+					$link = mysqli_connect('http://192.168.1.3','',''); 
 				if (mysqli_connect_errno()) { 
 					die(' <br> Could not connect to MySQL: ' . mysqli_connect_error()); 
 				} 
