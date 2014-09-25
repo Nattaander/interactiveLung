@@ -87,7 +87,7 @@
 		<div id="canvas-holder" style="width: 20%">
 			<canvas id="chart-area" width="500" height="500"/>
 		</div>
-		<div id="barchartDiv"style="width: 20%">
+		<div id="barchartDiv"style="width: 60%">
 			<canvas id="canvas" height="450" width="600"></canvas>
 		</div>
 
