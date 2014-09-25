@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+  <link rel="stylesheet" href="scripts/jquery-ui.css">
+  <script src="scripts/jquery1.js"></script>
+  <script src="scripts/jquery-ui.js"></script>
+
+  <script>
+  $(function() {
+    $( "#accordion" ).accordion();
+  });
+  </script>
+</head>
+
+<body style=
+"font: normal 16px/20px 'Helvetica Neue', Helvetica, sans-serif;
+  min-width: 1500px;
+  background-color: #27a7b5;">
+
+	<form action= "appQuestionnaire.php" name="studentform" onsubmit="return validateForm()" method="POST">
+
+	<div id="accordion">
+		<h3>Welcome</h3>
+		<div><p>Welcome! Please fill out every section in this questionnaire. It shouldn't take longer than a minute or two.</p></div>
+	  <h3>First name:</h3>
+	  <div>
+		 <input type="text" name="firstname"><br>
+	 </div>
+
+	 	<h3>Are you:</h3>
+	 	<div>
+			<input type="radio" name="sex" value="male">Male<br>
+			<input type="radio" name="sex" value="female">Female<br>
+		</div>
+
+
+		<h3>Do you like:</h3>
+		<div>
+			<input type="checkbox" name="Apples" value="apples" checked>Apples</input><br>
+			<input type="checkbox" name="Oranges" value="oranges" checked>Oranges</input><br>
+			<input type="checkbox" name="Bananas" value="bananas" checked>Bananas</input><br>
+		</div>
+
+		<h3>What is your favourite sport?</h3>
+		<div>
+			<select name="favourite">
+				<option value="Football" selected="selected">Football</option>
+				<option value="Basketball">Basketball</option>
+				<option value="Hurling">Hurling</option>		
+			</select><br>
+		</div>
+
+		<h3>Comments:</h3>
+		<div>
+			<input type="text" name="comments"><br>
+		</div>
+
+		<!-- submit button-->
+		
+
+	</div>
+	<input type="submit" value="submit the questionnaire"></input>
+	</form>
+</body>
+<script type="text/javascript">
+	function validateForm() {
+    var name = document.forms["studentform"]["firstname"].value;
+    var sex = document.forms["studentform"]["sex"].value;
+    var fav = document.forms["studentform"]["favourite"].value;
+    var com = document.forms["studentform"]["comments"].value;
+    if (name == null || name == "") {
+        alert("First name must be filled out");
+        return false;
+    }
+
+     if (sex == null || sex == "") {
+        alert("Gender must be filled out");
+        return false;
+    }
+
+    if (fav == null || fav == "") {
+        alert("Please select a favourite");
+        return false;
+    }
+
+    if (com == null || com == "") {
+        alert("Please provide some comments");
+        return false;
+    }
+}
+</script>
+
+<footer></footer>
+</html>

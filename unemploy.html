@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+  <link rel="stylesheet" href="scripts/jquery-ui.css">
+  <script src="scripts/jquery1.js"></script>
+  <script src="scripts/jquery-ui.js"></script>
+
+  <script>
+  $(function() {
+    $( "#accordion" ).accordion();
+  });
+  </script>
+</head>
+
+<body>
+	<form action= "appQuestionnaire.php" name="studentform" method="POST">
+
+	<div id="accordion">
+		<h3>test</h3>
+		<div><p>test</p></div>
+	  <h3>First name:</h3>
+	  <div>
+		 <input type="text" name="firstname"><br>
+	 </div>
+
+	 	<h3>Are you:</h3>
+	 	<div>
+			<input type="radio" name="sex" value="male">Male<br>
+			<input type="radio" name="sex" value="female">Female<br>
+		</div>
+
+
+		<h3>Do you like:</h3>
+		<div>
+			<input type="checkbox" name="Apples" value="Apples">Apples<br>
+			<input type="checkbox" name="Oranges" value="Oranges">Oranges<br>
+			<input type="checkbox" name="Bananas" value="Bananas">Bananas<br>
+		</div>
+
+		<h3>What is your favourite sport?</h3>
+		<div>
+			<select name="favourite">
+				<option value="Football" selected="selected">Football</option>
+				<option value="Basketball">Basketball</option>
+				<option value="Hurling">Hurling</option>		
+			</select><br>
+		</div>
+
+		<h3>Comments:</h3>
+		<div>
+			<textarea rows="5" cols="30" id="comments"></textarea><br>
+		</div>
+
+		<!-- submit button-->
+		
+
+	</div>
+	<input type="submit" value="submit the questionnaire"></input>
+	</form>
+</body>
+
+<footer></footer>
+</html>
