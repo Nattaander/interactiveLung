@@ -11,10 +11,14 @@
   $(function() {
     $( "#accordion" ).accordion();
   });
+
+  function clearForm(){
+     document.studentform.reset();
+  }
   </script>
 </head>
 
-<body style=
+<body onload="clearForm()" style=
 "font: normal 16px/20px 'Helvetica Neue', Helvetica, sans-serif;
   min-width: 1500px;
   background-color: #27a7b5;">
