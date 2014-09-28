@@ -96,7 +96,10 @@
 
 <script type="text/javascript">
 	function validateForm() {
-    var q1 = document.getElementById("sex").value;
+    //var q1 = document.getElementById("sex").value;
+    if (document.getElementById('sex').checked) {
+      var q1 = document.getElementById('sex').value;
+    }
     var q2 = document.getElementById("school").value;
     var q3 = document.getElementById("interest").value;
     var q4 = document.getElementById("cfaware").value;
