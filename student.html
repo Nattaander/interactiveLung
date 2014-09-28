@@ -28,61 +28,61 @@
 
 	 	<h3>Q1. Are you:</h3>
 	 	<div>
-			<input type="radio" name="sex" value="1">Male<br>
-			<input type="radio" name="sex" value="2">Female<br>
+			<input type="radio" name="sex" id="sex" value="1">Male<br>
+			<input type="radio" name="sex" id="sex" value="2">Female<br>
 		</div>
 
 
 		<h3>Q2. What level of education are you in:</h3>
 		<div>
-			<input type="radio" name="school" value="1">Primary
-			<input type="radio" name="school" value="2">Secondary
-			<input type="radio" name="school" value="3">Third Level
+			<input type="radio" name="school" id="school" value="1">Primary
+			<input type="radio" name="school" id="school" value="2">Secondary
+			<input type="radio" name="school" id="school" value="3">Third Level
 		</div>
 
 		<h3>Q3. Do you have an interest in science?</h3>
 		<div>
-			<input type="radio" name="interest" value="1">Yes
-			<input type="radio" name="interest" value="2">No
+			<input type="radio" name="interest" id="interest" value="1">Yes
+			<input type="radio" name="interest" id="interest" value="2">No
 		</div>
 
 		<h3>Q4. Have you heard of Cystic Fibrosis before?</h3>
 		<div>
-			<input type="radio" name="cfaware" value="1">Yes
-			<input type="radio" name="cfaware" value="2">No
+			<input type="radio" name="cfaware" id="cfaware" value="1">Yes
+			<input type="radio" name="cfaware" id="cfaware" value="2">No
 		</div>
 
 		<h3>Q5. Do you know anyone with Cystic Fibrosis?</h3>
 		<div>
-			<input type="radio" name="personCF" value="1">Yes
-			<input type="radio" name="personCF" value="2">No
+			<input type="radio" name="personCF" id="personCF" value="1">Yes
+			<input type="radio" name="personCF" id="personCF" value="2">No
 		</div>
 
 		<h3>Q6. Did you find the web application helpfull?</h3>
 		<div>
-			<input type="radio" name="webapp" value="1">Yes
-			<input type="radio" name="webapp" value="2">No
+			<input type="radio" name="webapp" id="webapp" value="1">Yes
+			<input type="radio" name="webapp" id="webapp" value="2">No
 		</div>
 
 		<h3>Q.7 Do you have any feedback on the website:</h3>
 		<div>
-			Feedback:<input type="text" name="webappfeed">
+			Feedback:<input type="text" name="webappfeed" id="webappfeed">
 		</div>
 
 		<h3>Q8. Do you think there should be a Cystic Fibrosis awareness day in your school/college?</h3>
 		<div>
-			<input type="radio" name="day" value="1">Yes
-			<input type="radio" name="day" value="2">No
+			<input type="radio" name="day" id="day" value="1">Yes
+			<input type="radio" name="day" id="day" value="2">No
 		</div>
 
 		<h3>Q9. Why do think you school/college should/shoudn't have this awareness day?</h3>
 		<div>
-			Why:<input type="text" name="why">
+			Why:<input type="text" name="why" id="why">
 		</div>
 
 		<h3>Q10. Any further comments:</h3>
 		<div>
-			Comments:<input type="text" name="comments">
+			Comments:<input type="text" name="comments" id="comments">
 		</div>
 
 	</div>
@@ -92,23 +92,23 @@
 
 <script type="text/javascript">
 	function validateForm() {
-    var q1 = document.forms["studentform"]["sex"].value;
-    var q2 = document.forms["studentform"]["school"].value;
-    var q3 = document.forms["studentform"]["interest"].value;
-    var q4 = document.forms["studentform"]["cfaware"].value;
+    var q1 = document.getElementById("sex").value;
+    var q2 = document.getElementById("school").value;
+    var q3 = document.getElementById("interest").value;
+    var q4 = document.getElementById("cfaware").value;
 
-    var q5 = document.forms["studentform"]["personCF"].value;
-    var q6 = document.forms["studentform"]["webapp"].value;
-    var q7 = document.forms["studentform"]["webappfeed"].value;
+    var q5 = document.getElementById("personCF").value;
+    var q6 = document.getElementById("webapp").value;
+    var q7 = document.getElementById("webappfeed").value;
 
-    var q8 = document.forms["studentform"]["day"].value;
-    var q9 = document.forms["studentform"]["why"].value;
-    var q10 = document.forms["studentform"]["comments"].value;
+    var q8 = document.getElementById("day").value;
+    var q9 = document.getElementById("why").value;
+    var q10 = document.getElementById("comments").value;
 
-    /*if ( q1== null || q1 == "") {
+    if ( q1== null || q1 == "") {
         alert("You have not filled out everything, please fill out Q1.");
         return false;
-    }*/
+    }
 
      if ( q2== null || q2 == "") {
         alert("You have not filled out everything, please fill out Q2.");
