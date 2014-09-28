@@ -2,9 +2,8 @@
 <html>
 	<head>
 		<meta charset=utf-8>
-		<title>Student Chart</title>
+		<title>Unemployed Chart</title>
 		<script src="chart/Chart.js"></script>
-		<link rel="stylesheet" href="style/x3dStyle.css">
 		<style>
 			body{ 
 				padding: 0;
@@ -36,18 +35,17 @@
 // declare variables
 		$q2c1 = 0;
 		$q2c2 = 0;
-		$q2c3 = 0;
 
 		$q4c1 = 0;
-
-		$q5c1 = 0;
 		
+		$q5c1 = 0;
+
 		$q8c1 = 0;
 
 		$rows = 0;
 
 // now give the variables values from the table
-		$result = mysqli_query($link,"SELECT * FROM cfstudent");
+		$result = mysqli_query($link,"SELECT * FROM cfunemployed");
 		while($row = mysqli_fetch_array($result)) {
 			if ($row['q2'] == 1){
 				$q2c1 = $q2c1 + 1;
@@ -55,14 +53,12 @@
 			else if ($row['q2'] == 2) { 
 				$q2c2 = $q2c2 + 1;
 			}
-			else if ($row['q2'] == 3) { 
-				$q2c3 = $q2c3 + 1;
-			}
 
-			if ($row['q4'] == 1){
+			
+			if ($row['q4'] == 1) { 
 				$q4c1 = $q4c1 + 1;
 			}
-			
+
 			if ($row['q5'] == 1) { 
 				$q5c1 = $q5c1 + 1;
 			}
@@ -74,7 +70,7 @@
 			$rows = $rows + 1;
 		}
 
-
+mysqli_close($link); 
 		?>
 	</head>
 <!-- ............................................................................-->
@@ -83,7 +79,6 @@
   min-width: 1500px;
   background-color: #27a7b5;">
 		<h1>Results</h1>
-		<h3> Students who answered the questionnaire </h3>
 		<div id="canvas-holder" style="width: 20%">
 			<canvas id="chart-area" width="500" height="500"/>
 		</div>
@@ -99,19 +94,13 @@
 					value: <?php echo ($q2c1/$rows) * 100; ?>,
 					color:"#F7464A",
 					highlight: "#FF5A5E",
-					label: "Percentage of Primary school students"
+					label: "Studied medicine or science"
 				},
 				{
 					value: <?php echo ($q2c2/$rows) * 100; ?>,
 					color: "#46BFBD",
 					highlight: "#5AD3D1",
-					label: "Percentage of Secondary school students"
-				},
-				{
-					value: <?php echo ($q2c3/$rows) * 100; ?>,
-					color: "#FDB45C",
-					highlight: "#FFC870",
-					label: "Percentage of Third Level students"
+					label: "Did not study medicine of science"
 				},
 
 			];

@@ -1,8 +1,8 @@
-<!doctype html>
+<!Doctype html>
 <html>
 	<head>
 		<meta charset=utf-8>
-		<title>Student Chart</title>
+		<title>Employed Chart</title>
 		<script src="chart/Chart.js"></script>
 		<link rel="stylesheet" href="style/x3dStyle.css">
 		<style>
@@ -36,18 +36,17 @@
 // declare variables
 		$q2c1 = 0;
 		$q2c2 = 0;
-		$q2c3 = 0;
+
+		$q3c1 = 0;
 
 		$q4c1 = 0;
-
-		$q5c1 = 0;
 		
-		$q8c1 = 0;
+		$q7c1 = 0;
 
 		$rows = 0;
 
 // now give the variables values from the table
-		$result = mysqli_query($link,"SELECT * FROM cfstudent");
+		$result = mysqli_query($link,"SELECT * FROM cfemployed");
 		while($row = mysqli_fetch_array($result)) {
 			if ($row['q2'] == 1){
 				$q2c1 = $q2c1 + 1;
@@ -55,20 +54,18 @@
 			else if ($row['q2'] == 2) { 
 				$q2c2 = $q2c2 + 1;
 			}
-			else if ($row['q2'] == 3) { 
-				$q2c3 = $q2c3 + 1;
-			}
 
-			if ($row['q4'] == 1){
-				$q4c1 = $q4c1 + 1;
+
+			if ($row['q3'] == 1){
+				$q3c1 = $q3c1 + 1;
 			}
 			
-			if ($row['q5'] == 1) { 
-				$q5c1 = $q5c1 + 1;
+			if ($row['q4'] == 1) { 
+				$q4c1 = $q4c1 + 1;
 			}
 
-			if ($row['q8'] == 1) { 
-				$q8c1 = $q8c1 + 1;
+			if ($row['q7'] == 1) { 
+				$q7c1 = $q7c1 + 1;
 			}
 
 			$rows = $rows + 1;
@@ -99,33 +96,27 @@
 					value: <?php echo ($q2c1/$rows) * 100; ?>,
 					color:"#F7464A",
 					highlight: "#FF5A5E",
-					label: "Percentage of Primary school students"
+					label: "Works in medicine or science"
 				},
 				{
 					value: <?php echo ($q2c2/$rows) * 100; ?>,
 					color: "#46BFBD",
 					highlight: "#5AD3D1",
-					label: "Percentage of Secondary school students"
-				},
-				{
-					value: <?php echo ($q2c3/$rows) * 100; ?>,
-					color: "#FDB45C",
-					highlight: "#FFC870",
-					label: "Percentage of Third Level students"
+					label: "Does not work in medicine of science"
 				},
 
 			];
 
 
 //-------------------------------------------------bar chart
-	var number = <?php echo ($q4c1/$rows) * 100 ?>;
-	var number2 = <?php echo ($q5c1/$rows) * 100 ?>;
-	var number3 = <?php echo ($q8c1/$rows) * 100 ?>;
+	var number = <?php echo ($q3c1/$rows) * 100 ?>;
+	var number2 = <?php echo ($q4c1/$rows) * 100 ?>;
+	var number3 = <?php echo ($q7c1/$rows) * 100 ?>;
 
 	var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 
 	var barChartData = {
-		labels : ["% heard of CF"," % yes to Q5", "% yes to Q8"],
+		labels : ["% heard of CF"," % yes to Q4", "% yes to Q7"],
 		datasets : [
 			{
 				fillColor : "rgba(220,220,220,0.5)",
