@@ -7,8 +7,8 @@ body {
 }
 
 .buttonDiv{
-	width:20%; /*vh*/
-	height:2%; /*vw*/
+	width:50%; /*vh*/
+	height:25%; /*vw*/
 	padding:1.2%; /*vw*/
 	font-size: 1.2%; /*vw*/
 	z-index: -1;
