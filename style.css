@@ -3,7 +3,7 @@ body {
   background-color: #27a7b5;
   display: inline;
   text-align: center;
-  width: 65%; /*vh*/
+  width: 70%; /*vh*/
 }
 
 .buttonDiv{
@@ -12,5 +12,5 @@ body {
 	padding:1.2%; /*vw*/
 	font-size: 1.2%; /*vw*/
 	z-index: -1;
-	/*margin-top: -20%;*/
+	margin-top: -40%;
 }
