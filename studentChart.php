@@ -154,7 +154,7 @@
 	<div id="btnDiv">
 		<h3>Thank You!</h3>
 		<!--<button id="homeBtn" onclick="location.href='index.html'">Home</button>-->
-		<form action="index.html">
+		<form action="app://index">
 			<input type="submit" value="Home"/>
 		</form>
 	</div>
