@@ -1,22 +1,31 @@
+<html>
+<head>
 <?php
 	header('Content-type: application/json');
+	$checked = 0;
 
 		if($_POST) {
 		    if($_POST['staffuname'] == 'user' && $_POST['staffpass'] == 'password') {
-		   echo '{"success":1}';
-
-
-//---------------------------what to do if password is ok
-
-			header("Location: staffChart.php");
-
-//---------------------------what to do if password is wrong
+		   	$checked = 1;
 
 		 } else {
-		    echo '{"success":0,"error_message":"Username and/or password is invalid."}';
-		    header("Location: staffLogin.html");
-		}
-		}else {    echo '{"success":0,"error_message":"Username and/or password is invalid."}';
-			header("Location: staffLogin.html");
-		}
+		    $checked = 0;
+		    }
+		}else {   
+			$checked = 0;
+			}
 ?>
+
+<script type="text/javascript">
+var checked = <?php echo $checked ?>;
+
+if (checked ==1){
+	window.location.assign("http://cs1.ucc.ie/~tv3/app/staffChart.php");
+}
+else {
+	window.location.assign("http://cs1.ucc.ie/~tv3/app/staffLogin.php");
+}
+
+</script>
+</head>
+</html>

@@ -3,14 +3,14 @@ body {
   background-color: #27a7b5;
   display: inline;
   text-align: center;
-  width: 70%; /*vh*/
+  width: 70vh;
 }
 
 .buttonDiv{
-	width:50%; /*vh*/
-	height:8%; /*vw*/
-	padding:1.2%; /*vw*/
-	font-size: 1.2%; /*vw*/
+	width:20vh;
+	height:2vw;
+	padding:1.2vw;
+	font-size: 1.2vw;
 	z-index: -1;
-	margin-top: -40%;
+	margin-top: -20%;
 }

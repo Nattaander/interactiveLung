@@ -76,7 +76,7 @@
 		$q10 = ($_POST['comments']);
 
 
-	$link = mysqli_connect('localhost','',''); 
+	$link = mysqli_connect('cs1.ucc.ie','tv3','oobeecha'); 
 	if (mysqli_connect_errno()) { 
 		die(' <br> Could not connect to MySQL: ' . mysqli_connect_error()); 
 	} 
@@ -85,7 +85,7 @@
 
 
 	// Select Data Base
-   if(!mysqli_select_db($link, "test")){
+   if(!mysqli_select_db($link, "mscim2014_tv3")){
    	echo " <br> cant select db";
    }
    //else {
@@ -108,5 +108,9 @@
 mysqli_close($link); 
 
 //echo file_get_contents("chart.html");
-header("Location: employChart.php");
+//header("Location: employChart.php");
 ?> 
+
+<script>
+window.location.assign("http://cs1.ucc.ie/~tv3/app/employChart.php");
+</script>

@@ -17,7 +17,7 @@
 <!-- ............................................................................-->
 		<?php 
 
-					$link = mysqli_connect('localhost','',''); 
+					$link = mysqli_connect('cs1.ucc.ie','tv3','oobeecha'); 
 				if (mysqli_connect_errno()) { 
 					die(' <br> Could not connect to MySQL: ' . mysqli_connect_error()); 
 				} 
@@ -26,7 +26,7 @@
 
 
 				// Select Data Base
-			   if(!mysqli_select_db($link, "test")){
+			   if(!mysqli_select_db($link, "mscim2014_tv3")){
 			   	echo " <br> cant select db";
 			   }
 			  // else {
@@ -144,7 +144,7 @@
 	</script>
 	<div id="btnDiv">
 		<h3>Thank You!</h3>
-		<button id="homeBtn" onclick="location.href='index.html'">Home</button>
+		<button id="homeBtn" onclick="http://cs1.ucc.ie/~tv3/app/index.html'">Home</button>
 	</div>
 
 	</body>
