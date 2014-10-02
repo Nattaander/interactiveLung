@@ -4,17 +4,18 @@
 		<meta charset=utf-8>
 		<title>Student Chart</title>
 		<script src="chart/Chart.js"></script>
+		<link rel="stylesheet" href="style.css">
 <!-- ...............................start of PHP.............................................-->
 		<?php
 
-			$link = mysqli_connect('cs1.ucc.ie','tv3','oobeecha'); 
+			$link = mysqli_connect('localhost','',''); 
 		if (mysqli_connect_errno()) { 
 			die(' <br> Could not connect to MySQL: ' . mysqli_connect_error()); 
 		} 
 
 
 		// Select Data Base
-	   if(!mysqli_select_db($link, "mscim2014_tv3")){
+	   if(!mysqli_select_db($link, "test")){
 	   	echo " <br> cant select db";
 	   }
 			// declare student variables
@@ -129,18 +130,17 @@
 	</head>
 <!-- ............................end of PHP................................................-->
 	<body style=
-"font: normal 16px/20px 'Helvetica Neue', Helvetica, sans-serif;
-  min-width: 1500px;
+"font: normal 10/20px 'Helvetica Neue', Helvetica, sans-serif;
   background-color: #27a7b5;">
 
-		<div id="canvas-holder" style="width: 20%">
-			<h5><?php echo $total; ?> people completed the questionnaire <br>
-				Below is the a chart showing how many users there were in each questionnaire</h5>
+		<div id="canvas-holder" style="width: 70%">
+			<h7><?php echo $total; ?> people completed the questionnaire <br>
+				Below is the a chart showing how many users there were in each questionnaire</h7>
 			<canvas id="chart-area" width="500" height="500"/>
 		</div>
 
 
-		<div id="barchartDiv"style="width: 20%">
+		<div id="barchartDiv"style="width: 70%">
 			<h5><?php echo $totalFem; ?> Females completed the questionnaire. <br>
 			<?php echo $totalMal; ?> Males completed the questionnaire.<br>
 			Below is a chart showing the percentage of Male is to Female users</h5>
@@ -148,14 +148,14 @@
 		</div>
 
 
-		<div id="barchartDiv2"style="width: 20%">
+		<div id="barchartDiv2"style="width: 70%">
 			<h5>People who were unaware of CF prior to the application <br>
 				Below represents the number of people who were aware of CF vs the users who were not</h5>
 			<canvas id="canvas2" height="450" width="600"></canvas>
 		</div>
 
 
-		<div id="barchartDiv3"style="width: 20%">
+		<div id="barchartDiv3"style="width: 70%">
 			<h5>People who think CF awareness is important <br>
 				Below is the number of people who thought it was important vs that it wasn't</h5>
 			<canvas id="canvas3" height="450" width="600"></canvas>
@@ -309,7 +309,7 @@
 
 	</script>	
 	<div id="btnDiv">
-		<button id="homeBtn" onclick="http://cs1.ucc.ie/~tv3/app/index.html">Home</button>
+		<button id="homeBtn" onclick="location.href='index.html'">Home</button>
 	</div>
 
 	</body>
